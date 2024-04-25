@@ -59,10 +59,6 @@ describe('CreditCardValidator', () => {
         expect(image.classList.contains('no-active')).toBe(true);
       });
     });
-
-    it('должно добавить класс "no-active" всем элементам с классом "image_card"', () => {
-      const elements = document.querySelectorAll('.image_card');
-    });
   });
 
   describe('luna', () => {
