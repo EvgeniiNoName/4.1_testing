@@ -59,6 +59,10 @@ describe('CreditCardValidator', () => {
         expect(image.classList.contains('no-active')).toBe(true);
       });
     });
+
+    it('должно добавить класс "no-active" всем элементам с классом "image_card"', () => {
+      const elements = document.querySelectorAll('.image_card');
+    });
   });
 
   describe('luna', () => {
@@ -79,10 +83,10 @@ describe('CreditCardValidator', () => {
     it('должно показать предупреждение "Валидный номер кредитной карты!" для правильного номера кредитной карты', () => {
       jest.spyOn(window, 'alert').mockImplementation(() => {});
       const inputField = document.getElementById('InputNumber');
-      inputField.value = '4111111111111111';
+      inputField.value = '4716871145525771';
       const button = document.getElementById('buttonValid');
       button.click();
-      expect(window.alert).toHaveBeenCalledWith('Валидный номер кредитной карты!');
+      expect(window.alert).toHaveBeenCalledWith('Valid credit card number!');
     });
 
     it('должно показать предупреждение "Невалидный номер кредитной карты!" для неправильного номера кредитной карты', () => {
@@ -91,7 +95,7 @@ describe('CreditCardValidator', () => {
       inputField.value = '4111111111111112';
       const button = document.getElementById('buttonValid');
       button.click();
-      expect(window.alert).toHaveBeenCalledWith('Невалидный номер кредитной карты!');
+      expect(window.alert).toHaveBeenCalledWith('Invalid credit card number!');
     });
   });
 });

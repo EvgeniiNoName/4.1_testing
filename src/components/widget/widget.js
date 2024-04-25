@@ -36,7 +36,6 @@ class CreditCardValidator {
             }
             if (inputValue.length < 1) {
                 let elements = document.getElementsByClassName("image_card");
-                console.log(elements)
                 for (let i = 0; i < elements.length; i++) {
                     if (!elements[i].classList.contains('no-active')) {
                         elements[i].classList.add('no-active')
@@ -46,10 +45,9 @@ class CreditCardValidator {
             })
         }
 
-    luna() {
-        let inputValue = document.getElementById('InputNumber');
-        if (inputValue > 0) {
-            let inputValue = inputValue.value.toString();
+    luna(inputValue) {
+        if (inputValue.length > 0) {
+            inputValue = inputValue.toString();
             let sum = 0;
             const parity = inputValue.length % 2;
             for (let i = 0; i < inputValue.length; i++) {
@@ -63,14 +61,19 @@ class CreditCardValidator {
                 sum += digit;
             }
             const isValid = sum % 10 === 0;
+
             return isValid;
+
         }
     }
 
     buttonClick() {
         let button = document.getElementById("buttonValid");
+        let inputValue = document.getElementById('InputNumber');
+
         button.addEventListener('click', function() {
-            if (this.luna()) {
+            if (this.luna(inputValue.value)) {
+
                 alert('Valid credit card number!');
             } else {
                 alert('Invalid credit card number!');
