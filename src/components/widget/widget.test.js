@@ -59,6 +59,18 @@ describe('CreditCardValidator', () => {
         expect(image.classList.contains('no-active')).toBe(true);
       });
     });
+
+    it('инициализация', () => {
+      const inputField = document.getElementById('InputNumber');
+      inputField.value = '5';
+      inputField.dispatchEvent(new Event('input'));
+      const cardImagesBefore = document.getElementsByClassName('no-active');
+      expect(cardImagesBefore.length).toBe(3);
+      inputField.value = '';
+      inputField.dispatchEvent(new Event('input'));
+      const cardImagesAfter = document.getElementsByClassName('no-active');
+      expect(cardImagesAfter.length).toBe(4);
+    });
   });
 
   describe('luna', () => {
